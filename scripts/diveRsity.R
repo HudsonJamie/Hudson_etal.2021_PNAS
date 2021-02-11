@@ -1,19 +1,16 @@
+# diveRsity script
+# Jamie Hudson
+# Created: 12 Sep 2019
+# Edited: 06 Feb 2021
+
 library(diveRsity)
 library(adegenet)
 library(tidyverse)
 
-setwd("~/OneDrive - University of Southampton/PhD/GBS/diveRsity/")
-#### diverstiy reads genepop file, must be in working directory
-pyura_genpop <- read.genepop("../adegenet/dapc/pyura_praeputialis/05Feb21_pyura_neutral.gen", ncode = 3)
-
-pyura_genpop$pop <- as.factor(c(rep("C4",9),rep("C6",6),rep("A2",17),rep("C2",12),rep("A5",14),
-                                   rep("C3",8),rep("A3",19),rep("C5",13),rep("A4",13),
-                                   rep("C1",7),rep("A7",13),rep("A6",17),rep("A1",16)))
-
 # Fis ---------------------------------------------------------------------
 
 
-popgen_stats <- divBasic("../adegenet/dapc/pyura_praeputialis/05Feb21_pyura_neutral.gen", outfile = NULL, gp = 3, 
+popgen_stats <- divBasic("../data/pyura_neutral.gen", outfile = NULL, gp = 3, 
                      bootstraps = 10000)
 
 save(popgen_stats, file = "popgen_stats.RData") # something suitable
