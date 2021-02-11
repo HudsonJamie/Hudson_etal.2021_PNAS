@@ -312,3 +312,6 @@ pdf(file = "./figures/06Feb21_dapc_pyura_anto_candidateRDA.pdf",
 (G <- scatter(dapc.pyura.candidateRDA.anto, scree.da=FALSE, col = c("#993404","#cc4c02","#ec7014","#fe9929","#fec44f","#fc8d59"),
               cex=3, pch=20, cell=1.5, clabel=1.2))
 dev.off()
+
+sessionInfo()
+
