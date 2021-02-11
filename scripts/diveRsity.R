@@ -125,3 +125,5 @@ private.alleles.df_2 %>%
   summarise(count = sum(C5 != 0 & C5 != 1))
 private.alleles.df_2 %>% 
   summarise(count = sum(C6 != 0 & C6 != 1))
+                                
+sessionInfo()
