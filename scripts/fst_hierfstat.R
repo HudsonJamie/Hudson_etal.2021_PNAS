@@ -8,14 +8,9 @@ library(hierfstat)
 library(reshape2)
 library(tidyverse)
 
-# Set wd ------------------------------------------------------------------
-
-setwd("/GBS/hierfstat/pyura_praeputialis/")
-
-
 # Input data --------------------------------------------------------------
 
-neutral.gen <- read.genepop("/05Feb21_pyura_neutral.gen", ncode = 3) # read in genepop file
+neutral.gen <- read.genepop("../data/05Feb21_pyura_neutral.gen", ncode = 3) # read in genepop file
 
 neutral.hierfstat <- genind2hierfstat(neutral.gen) #convert genind to hierfstat df
 
