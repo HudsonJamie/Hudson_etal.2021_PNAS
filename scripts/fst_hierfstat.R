@@ -83,3 +83,7 @@ nrow(neutral_pwfst.melt.ci[which(neutral_pwfst.melt.ci$uci >0 & neutral_pwfst.me
     theme_bw()+
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
           axis.title = element_text(size = 14),legend.text = element_text(size =10), legend.title = element_text(size =16)))
+
+sessionInfo()
+
+
