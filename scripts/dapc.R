@@ -9,13 +9,9 @@ library(pegas)
 library(seqinr)
 library(ggplot2)
 
-# Set wd ------------------------------------------------------------------
-
-setwd("~/OneDrive - University of Southampton/PhD/GBS/adegenet/dapc/pyura_praeputialis/")
-
 # Input data --------------------------------------------------------------
 
-pyura_neutral <- read.genepop("05Feb21_pyura_neutral.gen", ncode = 3)
+pyura_neutral <- read.genepop("../data/pyura_neutral.gen", ncode = 3)
 
 pyura_neutral$pop <- as.factor(c(rep("C4",9),rep("C6",6),rep("A2",17),rep("C2",12),rep("A5",14),
                                  rep("C3",8),rep("A3",19),rep("C5",13),rep("A4",13),
@@ -160,7 +156,7 @@ dev.off()
 
 # candidate_loci ----------------------------------------------------------
 
-pyura_candidate <- read.genepop("06Feb21_pyura_candidate.gen", ncode = 3)
+pyura_candidate <- read.genepop("../data/pyura_candidate.gen", ncode = 3)
 
 pyura_candidate$pop <- as.factor(c(rep("C4",9),rep("C6",6),rep("A2",17),rep("C2",12),rep("A5",14),
                                  rep("C3",8),rep("A3",19),rep("C5",13),rep("A4",13),
@@ -278,7 +274,7 @@ dev.off()
 
 # RDA temp plot -----------------------------------------------------------
 
-pyura_rda <- read.genepop("06Feb21_pyura_candidate_RDAsst.gen", ncode = 3)
+pyura_rda <- read.genepop("../data/pyura_candidate_RDAsst.gen", ncode = 3)
 
 pyura_rda$pop <- as.factor(c(rep("C4",9),rep("C6",6),rep("A2",17),rep("C2",12),rep("A5",14),
                                  rep("C3",8),rep("A3",19),rep("C5",13),rep("A4",13),
