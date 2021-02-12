@@ -9,7 +9,6 @@ library(tidyverse)
 
 # Fis ---------------------------------------------------------------------
 
-
 popgen_stats <- divBasic("../data/pyura_neutral.gen", outfile = NULL, gp = 3, 
                      bootstraps = 10000)
 
@@ -65,7 +64,7 @@ mean_He[,order(colnames(mean_He))]
 
 # Count number of private alleles
 
-priv_allele.pyura <- readGenepop(infile = "../adegenet/dapc/pyura_praeputialis/05Feb21_pyura_neutral.gen", gp = 3)
+priv_allele.pyura <- readGenepop(infile = "../data/pyura_neutral.gen", gp = 3)
 priv_allele.pyura$pop_names <- c("C4", "C6", "A2", "C2", "A5", "C3", 
                                  "A3", "C5", "A4", "C1", "A7", "A6", 
                                  "A1")
@@ -95,32 +94,26 @@ colnames(private.alleles.df) <- as.factor(c(rep("C4",2),rep("C6",2),rep("A2",2),
 
 private.alleles.df_2 <- private.alleles.df[seq(1, ncol(private.alleles.df),2)]
 
-# For each population count number of private alleles- got to make this nicer
-private.alleles.df_2 %>% 
-  summarise(count = sum(A1 != 0 & A1 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A2 != 0 & A2 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A3 != 0 & A3 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A4 != 0 & A4 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A5 != 0 & A5 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A6 != 0 & A6 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(A7 != 0 & A7 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C1 != 0 & C1 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C2 != 0 & C2 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C3 != 0 & C3 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C4 != 0 & C4 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C5 != 0 & C5 != 1))
-private.alleles.df_2 %>% 
-  summarise(count = sum(C6 != 0 & C6 != 1))
-                                
+# For each population count number of private alleles
+
+private_allele <- function(dataset, col_name) {
+  col_name <- enquo(col_name)
+  dataset %>%
+    summarise(count = sum(!!col_name != 0 & !!col_name != 1))
+}
+
+private_allele(private.alleles.df_2, A1) #6
+private_allele(private.alleles.df_2, A2) #3
+private_allele(private.alleles.df_2, A3) #3
+private_allele(private.alleles.df_2, A4) #0
+private_allele(private.alleles.df_2, A5) #1
+private_allele(private.alleles.df_2, A6) #4
+private_allele(private.alleles.df_2, A7) #2
+private_allele(private.alleles.df_2, C1) #2
+private_allele(private.alleles.df_2, C2) #4
+private_allele(private.alleles.df_2, C3) #3
+private_allele(private.alleles.df_2, C4) #1
+private_allele(private.alleles.df_2, C5) #1
+private_allele(private.alleles.df_2, C6) #0
+               
 sessionInfo()
